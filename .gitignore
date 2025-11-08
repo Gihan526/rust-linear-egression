@@ -1,1 +1,15 @@
-/target
+# Rust build files
+/target/
+**/*.rs.bk
+
+# Cargo files
+Cargo.lock
+
+# IDE/Editor files
+.vscode/
+.idea/
+.DS_Store
+
+# Logs and backups
+*.log
+*.tmp
