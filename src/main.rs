@@ -89,30 +89,30 @@ fn gradient_descent(
 fn main() {
     let df = read_csv("src/data.csv").unwrap();
 
-    // Filter the dataframe
+    // Filtering the dataframe
     let filtered_df = filter_all_ones(&df).unwrap();
 
-    // ---- Vector  ----
+ 
     let x_vec = get_col_vector(&filtered_df, "TreatmentHours").unwrap();
     let y_vec = get_col_vector(&filtered_df, "RecoveryScore").unwrap();
 
     println!("x_vec : {:?}", x_vec);
     println!("y_vec : {:?}", y_vec);
 
-    // Prepare X and y as ndarray arrays and run gradient descent (Rust version)
+    // Preparing X and y 
     let (x_matrix, y_array) = prepare_xy(&x_vec, &y_vec);
 
-    // Hyperparameters — tune as needed
+    // Hyperparameters
     let learning_rate = 0.0001;
     let iterations: usize = 1_000_000;
 
-    // Time the training (gradient descent)
+    // Time for the training (gradient descent)
     let start = std::time::Instant::now();
     let (beta, cost_history) = gradient_descent(&x_matrix, &y_array, learning_rate, iterations);
     let duration = start.elapsed();
     println!("\nTraining time: {:.4} seconds", duration.as_secs_f64());
 
-    // Print final results in the same labeled format as the Python example
+    //  Final results 
     println!("\nFinal Parameters:");
     if beta.len() >= 2 {
         println!("beta0 (intercept): {:.2}", beta[0]);
