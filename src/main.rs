@@ -87,7 +87,7 @@ fn gradient_descent(
 
 
 fn main() {
-    let df = read_csv("src/f.csv").unwrap();
+    let df = read_csv("src/data.csv").unwrap();
 
     // Filter the dataframe
     let filtered_df = filter_all_ones(&df).unwrap();
